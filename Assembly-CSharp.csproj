@@ -137,6 +137,7 @@
     <Compile Include="Assets/Sun_Temple/PostProcessing/Runtime/Models/GrainModel.cs" />
     <Compile Include="Assets/MainMenuController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/SkewTextExample.cs" />
+    <Compile Include="Assets/DisapearingPlatform.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/WarpTextExample.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TextMeshProFloatingText.cs" />
     <Compile Include="Assets/Sun_Temple/PostProcessing/Runtime/Models/MotionBlurModel.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Assets/Sun_Temple/PostProcessing/Runtime/PostProcessingModel.cs" />
     <Compile Include="Assets/Kawaii Slimes/Scripts/AI/Face.cs" />
     <Compile Include="Assets/Sun_Temple/PostProcessing/Runtime/Models/DitheringModel.cs" />
+    <Compile Include="Assets/MovingPlatform.cs" />
     <Compile Include="Assets/Sun_Temple/PostProcessing/Runtime/Components/TaaComponent.cs" />
     <Compile Include="Assets/Sun_Temple/PostProcessing/Runtime/Models/UserLutModel.cs" />
     <Compile Include="Assets/Sun_Temple/Scripts/ExposureManager/ExposureManager.cs" />
