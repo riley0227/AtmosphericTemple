@@ -9,24 +9,26 @@ public class EndGameTrigger : MonoBehaviour
     public LevelManager levelManager; // Reference to the LevelManager script
 
     private void OnTriggerEnter(Collider other)
+{
+    if (other.CompareTag("Player"))
     {
-        if (other.CompareTag("Player"))
-        {
-            // Stop the timer
-            levelManager.StopTimer();
+        Debug.Log("Player reached the temple! Activating end game screen."); // Add this line
 
-            // Show the end game screen
-            endGameScreen.SetActive(true);
+        // Stop the timer
+        levelManager.StopTimer();
 
-            // Display the time completed
-            float finalTime = levelManager.GetElapsedTime();
-            completionTimeText.text = "Time Completed: " + finalTime.ToString("F2") + "s";
+        // Show the end game screen
+        endGameScreen.SetActive(true);
 
-            // Display the high score
-            highScoreText.text = "High Score: " + PlayerPrefs.GetFloat(levelManager.levelName + "_HighScore", 0f).ToString("F2") + "s";
+        // Display the time completed
+        float finalTime = levelManager.GetElapsedTime();
+        completionTimeText.text = "Time Completed: " + finalTime.ToString("F2") + "s";
 
-            // Optionally, pause the game
-            Time.timeScale = 0f;
-        }
+        // Display the high score
+        highScoreText.text = "High Score: " + PlayerPrefs.GetFloat(levelManager.levelName + "_HighScore", 0f).ToString("F2") + "s";
+
+        // Optionally, pause the game
+        Time.timeScale = 0f;
     }
+}
 }
