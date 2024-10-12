@@ -91,6 +91,7 @@
     <Compile Include="Assets/Sun_Temple/PostProcessing/Runtime/PostProcessingProfile.cs" />
     <Compile Include="Assets/Sun_Temple/PostProcessing/Runtime/Utils/MaterialFactory.cs" />
     <Compile Include="Assets/Sun_Temple/PostProcessing/Runtime/Components/FxaaComponent.cs" />
+    <Compile Include="Assets/LevelManager.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_A.cs" />
     <Compile Include="Assets/Sun_Temple/PostProcessing/Runtime/Models/ScreenSpaceReflectionModel.cs" />
     <Compile Include="Assets/Sun_Temple/Scripts/MoveToLayer.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Assets/Zololgo/OrbitZoomPanCamera/Scripts/OrbitZoomPanCamera.cs" />
     <Compile Include="Assets/Sun_Temple/PostProcessing/Runtime/PostProcessingBehaviour.cs" />
     <Compile Include="Assets/Sun_Temple/PostProcessing/Runtime/Components/ColorGradingComponent.cs" />
+    <Compile Include="Assets/EndGameTrigger.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexJitter.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_DigitValidator.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_FrameRateCounter.cs" />
