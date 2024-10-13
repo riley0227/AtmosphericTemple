@@ -1,74 +1,74 @@
+using TMPro; // Add this line at the top of your script
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 
 public class LevelManager : MonoBehaviour
 {
-    public Text timerText; // UI text to display the timer
-    public Text highScoreText; // UI text to display the high score
+    public GameObject endGameScreen; // Reference to the end game UI screen
+    public TMP_Text highScoreText; // Reference to the high score text (TextMeshPro)
+    public TMP_Text completionTimeText; // Reference to the completion time text (TextMeshPro)
+
     private float elapsedTime;
-    private bool isRunning;
     private float highScore;
 
-    public string levelName; // Name of the current level
-
-    void Start()
+    private void Start()
     {
+        endGameScreen.SetActive(false); // Make sure the end game screen is hidden at the start
         elapsedTime = 0f;
-        isRunning = true;
+        highScore = PlayerPrefs.GetFloat("HighScore", float.MaxValue); // Load high score
 
-        // Load the high score for this level
-        LoadHighScore();
+        UpdateHighScoreText();
     }
 
-    void Update()
+    private void Update()
     {
-        if (isRunning)
-        {
-            elapsedTime += Time.deltaTime;
-            timerText.text = "Time: " + elapsedTime.ToString("F2") + "s";
-        }
+        elapsedTime += Time.deltaTime;
     }
 
-    public void StopTimer()
+    public void DisplayEndScreen()
     {
-        isRunning = false;
+        Debug.Log("End Game Screen Activated!");
 
-        // Check if the current time is a new high score
-        if (elapsedTime < highScore || highScore == 0f)
+        // Show the end game screen
+        endGameScreen.SetActive(true);
+
+        // Display the completion time
+        completionTimeText.text = "Completion Time: " + elapsedTime.ToString("F2") + "s";
+
+        // Check if this is a new high score
+        if (elapsedTime < highScore)
         {
             highScore = elapsedTime;
-            SaveHighScore();
+            PlayerPrefs.SetFloat("HighScore", highScore);
+            PlayerPrefs.Save(); // Save the new high score
+
             highScoreText.text = "New High Score: " + highScore.ToString("F2") + "s";
         }
         else
         {
             highScoreText.text = "High Score: " + highScore.ToString("F2") + "s";
         }
-    }
 
-    private void LoadHighScore()
-    {
-        // Load the high score from PlayerPrefs
-        highScore = PlayerPrefs.GetFloat(levelName + "_HighScore", 0f);
-        highScoreText.text = "High Score: " + (highScore == 0f ? "N/A" : highScore.ToString("F2") + "s");
-    }
-
-    private void SaveHighScore()
-    {
-        // Save the high score to PlayerPrefs
-        PlayerPrefs.SetFloat(levelName + "_HighScore", highScore);
-        PlayerPrefs.Save();
-    }
-
-    public float GetElapsedTime()
-    {
-        return elapsedTime;
+        // Pause the game
+        Time.timeScale = 0f;
     }
 
     public void RestartLevel()
     {
-        Time.timeScale = 1f; // Reset time scale in case it was paused
+        Time.timeScale = 1f; // Reset the time scale
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload the current scene
+    }
+
+    private void UpdateHighScoreText()
+    {
+        if (highScore == float.MaxValue)
+        {
+            highScoreText.text = "High Score: N/A";
+        }
+        else
+        {
+            highScoreText.text = "High Score: " + highScore.ToString("F2") + "s";
+        }
     }
 }
